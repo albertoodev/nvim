@@ -200,6 +200,16 @@ function M.setup()
 	hl(0, "DiffDelete", { fg = c.color1, bg = "NONE" })
 	hl(0, "DiffText", { fg = c.color4, bg = "NONE", bold = true })
 
+	-- Oil Git
+	hl(0, "OilGitAdded", { fg = c.color2 })
+	hl(0, "OilGitModified", { fg = c.color3 })
+	hl(0, "OilGitUntracked", { fg = c.color4 })
+	hl(0, "OilGitRenamed", { fg = c.color6 })
+	hl(0, "OilGitCopied", { fg = c.color6 })
+	hl(0, "OilGitDeleted", { fg = c.color1 })
+	hl(0, "OilGitIgnored", { fg = c.color8 })
+	hl(0, "OilGitUnmerged", { fg = c.color1 })
+
 	-- Lualine mode colors
 	hl(0, "lualine_a_normal", { fg = c.background, bg = c.color4, bold = true })
 	hl(0, "lualine_a_insert", { fg = c.background, bg = c.color2, bold = true })

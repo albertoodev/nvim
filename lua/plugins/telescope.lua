@@ -52,6 +52,9 @@ return {
 				})
 			end, { desc = "Telescope find dirs" })
 			vim.keymap.set("n", "<leader>fb", builtin.buffers, { desc = "Telescope buffers" })
+			vim.keymap.set("n", "<leader>fe", function()
+				builtin.diagnostics({ severity = { "error", "warn" } })
+			end, { desc = "Telescope diagnostics (Errors & Warnings)" })
 
 			-- git
 			vim.keymap.set("n", "<leader>gb", builtin.git_branches, { desc = "Git Branches" })

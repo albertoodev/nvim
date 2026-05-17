@@ -1,8 +1,20 @@
 vim.filetype.add({ extension = { jsonl = "json", jsonc = "json" } })
 
+vim.api.nvim_create_autocmd("BufReadPre", {
+	callback = function()
+		local size = vim.fn.getfsize(vim.api.nvim_buf_get_name(0))
+		if size > 100 * 1024 or size == -2 then
+			vim.b.large_file = true
+			vim.opt_local.foldmethod = "manual"
+			vim.opt_local.spell = false
+			vim.bo.syntax = "off"
+		end
+	end,
+})
+
 vim.o.autoread = true
 
-vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter", "CursorHold", "CursorHoldI" }, {
+vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter" }, {
 	callback = function()
 		if vim.fn.mode() ~= "c" then
 			vim.cmd.checktime()
