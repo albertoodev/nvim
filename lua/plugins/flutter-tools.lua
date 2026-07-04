@@ -17,12 +17,10 @@ return {
 					notification_style = "plugin",
 				},
 				lsp = {
-					on_attach = require("custom.lsp_attach").on_attach,
-					color = {
-						enabled = true,
-						background = true,
-						foreground = false,
-					},
+					on_attach = function(client, bufnr)
+						require("custom.lsp_attach").on_attach(client, bufnr)
+						vim.lsp.document_color.enable(true, { bufnr = bufnr })
+					end,
 					settings = {
 						showTodos = true,
 						completeFunctionCalls = true,
